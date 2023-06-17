@@ -50,12 +50,11 @@ const Overlay = styled(motion.div)`
 `;
 
 const boxVariants = {
-  initial: (index: string) => ({
-    transformOrigin: index === "1" ? "100% 100%" : "0 0",
-  }),
-  hover: {
+  hover: (index: string) => ({
     scale: 1.1,
-  },
+    x: index === "1" ? -15 : 15,
+    y: index === "1" ? -10 : 10,
+  }),
 };
 
 function App() {
@@ -69,7 +68,6 @@ function App() {
           variants={boxVariants}
           layoutId={"1"}
           onClick={() => setId("1")}
-          initial="initial"
           whileHover="hover"
         ></Box>
         <Box>{!clicked ? <Circle layoutId="circle" /> : null}</Box>
@@ -79,7 +77,6 @@ function App() {
           variants={boxVariants}
           layoutId={"4"}
           onClick={() => setId("4")}
-          initial="initial"
           whileHover="hover"
         ></Box>
       </Grid>
